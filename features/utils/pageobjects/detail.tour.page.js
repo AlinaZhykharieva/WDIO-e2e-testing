@@ -30,12 +30,12 @@ class DetailTourPage {
     await this.buttonMaximumAmountOfDays.buttonClick();
   }
 
-  async fillFormForCompleteBookingTour(bookingInfo) {
+  async fillFormForCompleteBookingTour(name, email, phone, address) {
     await this.inputFirstName.waitForElementDisplayed();
-    await this.inputFirstName.addValue(bookingInfo.name);
-    await this.inputEmail.addValue(bookingInfo.email);
-    await this.inputPhone.addValue(bookingInfo.phone);
-    await this.inputAddress.addValue(bookingInfo.address);
+    await this.inputFirstName.addValue(name);
+    await this.inputEmail.addValue(email);
+    await this.inputPhone.addValue(phone);
+    await this.inputAddress.addValue(address);
     await this.buttonSubmit.buttonClick();
   }
 }

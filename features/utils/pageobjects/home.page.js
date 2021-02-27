@@ -4,13 +4,13 @@ import Input from '../elements/input';
 import DropDown from '../elements/drop.down';
 import Button from '../elements/button';
 
-class HomePage{
+class HomePage {
   get toursTab() {
     return new Link('a.tours');
   }
 
   get inputTour() {
-    return new Input('.locationlisttours >.select2-focusser.select2-offscreen');
+    return new Input('.locationlisttours >input');
   }
 
   get tourInDropDown() {
@@ -42,6 +42,7 @@ class HomePage{
   }
 
   async searchTour(tourName, dateOfStartTour) {
+    await this.inputTour.waitForEnabled();
     await this.inputTour.addValue(tourName);
     await this.tourInDropDown.dropDownItemClick();
     await this.tourType.elementClick();

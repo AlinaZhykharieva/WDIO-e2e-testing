@@ -14,6 +14,12 @@ export default class Element {
   async waitForElementDisplayed() {
     return (await this.element).waitForDisplayed({ timeout: 3000 });
   }
+
+  async waitForEnabled() {
+    return (await this.element).waitForEnabled({ timeout: 12000 });
+  }
+
+  async getText() {
+    return (await this.element).getText();
+  }
 }
-
-

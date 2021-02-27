@@ -1,10 +1,10 @@
 import InvoicePage from '../pageobjects/invoice.page';
 
 class InvoicePageValidator {
-  async comparingDetailsOfBooking(detailsOfBooking) {
-    await expect(await InvoicePage.firstName).toHaveText(detailsOfBooking.name);
-    await expect(await InvoicePage.address).toHaveText(detailsOfBooking.address);
-    await expect(await InvoicePage.phone).toHaveText(detailsOfBooking.phone);
+  async comparingDetailsOfBooking(name, phone, address) {
+    await expect(await InvoicePage.firstName).toHaveText(name);
+    await expect(await InvoicePage.address).toHaveText(address);
+    await expect(await InvoicePage.phone).toHaveText(phone);
   }
 }
 

@@ -6,6 +6,6 @@ When(/^I go to login page$/, async () => {
   await Header.clickLogin();
 });
 
-Then(/^I click to Logo$/,async () => {
+Then(/^I go to home page$/, async () => {
   await Header.goToHomePage();
 });

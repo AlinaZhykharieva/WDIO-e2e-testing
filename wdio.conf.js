@@ -1,6 +1,6 @@
 const drivers = {
-  chrome: { version: '88.0.4324.96' }, // https://chromedriver.chromium.org/
-  firefox: { version: '0.29.0' }, // https://github.com/mozilla/geckodriver/releases
+  chrome: { version: '88.0.4324.96' },
+  firefox: { version: '0.29.0' },
 };
 
 exports.config = {
@@ -149,7 +149,6 @@ exports.config = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter.html
   reporters: ['spec'],
-
   //
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
