@@ -17,5 +17,5 @@ geckodriver version: 0.29.0 from https://github.com/mozilla/geckodriver/releases
 # Run tests
 wdio wdio.conf.js --login user@phptravels.com  --password demouser
 
-#Report 
+# Report 
 HTML report generated in report folder
