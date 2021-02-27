@@ -2,13 +2,16 @@
 
 # Prerequisites
 NODE version = 10.x.x
+
 Java version >=8
 
 # Install
 npm install
 
-install drivers for selenium standalone service:
+install drivers for selenium standalone:
+
 chromedriver version: 88.0.4324.96 from https://chromedriver.chromium.org/
+
 geckodriver version: 0.29.0 from https://github.com/mozilla/geckodriver/releases
 
 # Run tests
