@@ -1,3 +1,5 @@
+const { ReportAggregator, HtmlReporter} = require('@rpii/wdio-html-reporter');
+
 const drivers = {
   chrome: { version: '88.0.4324.96' },
   firefox: { version: '0.29.0' },
@@ -148,7 +150,33 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter.html
-  reporters: ['spec'],
+  reporters: ['spec',
+    [HtmlReporter, {
+      debug: true,
+      outputDir: './reports/html-reports/',
+      filename: 'report.html',
+      reportTitle: 'Test Report Title',
+
+      // to show the report in a browser when done
+      showInBrowser: true,
+
+      // to turn on screenshots after every test
+      useOnAfterCommandForScreenshot: false,
+
+      // to use the template override option, can point to your own file in the test project:
+      // templateFilename: path.resolve(__dirname, '../template/wdio-html-reporter-alt-template.hbs'),
+
+      // to add custom template functions for your custom template:
+      // templateFuncs: {
+      //     addOne: (v) => {
+      //         return v+1;
+      //     },
+      // },
+
+      // to initialize the logger
+    },
+    ],
+  ],
   //
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
@@ -173,8 +201,18 @@ exports.config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare(config, capabilities) {
-  // },
+  onPrepare(config, capabilities) {
+    let reportAggregator = new ReportAggregator({
+      outputDir: './reports/html-reports/',
+      filename: 'master-report.html',
+      reportTitle: 'Master Report',
+      browserName : capabilities.browserName,
+      collapseTests: true,
+    });
+    reportAggregator.clean() ;
+
+    global.reportAggregator = reportAggregator;
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.
@@ -238,8 +276,19 @@ exports.config = {
   /**
    * Function to be executed after a test (in Mocha/Jasmine).
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    const path = require('path');
+    const moment = require('moment');
+
+    // if test passed, ignore, else take and save screenshot.
+    if (test.passed) {
+      return;
+    }
+    const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+    const filepath = path.join('reports/html-reports/screenshots/', timestamp + '.png');
+    browser.saveScreenshot(filepath);
+    process.emit('test:screenshot', filepath);
+  },
 
   /**
    * Hook that gets executed after the suite has ended
@@ -281,8 +330,11 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+  onComplete: function(exitCode, config, capabilities, results) {
+    (async () => {
+      await global.reportAggregator.createReport();
+    })();
+  },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session
