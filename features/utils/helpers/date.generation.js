@@ -1,6 +1,6 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 export default function addDays(days) {
-  const now = moment().add(days, 'days');
+  const now = dayjs().add(days, 'day');
   return now.format('DD/MM/YYYY');
 }

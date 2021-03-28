@@ -7,5 +7,5 @@ When(/^I go to login page$/, async () => {
 });
 
 Then(/^I go to home page$/, async () => {
-  await Header.goToHomePage();
+  await Header.clickHeaderLogoLink();
 });

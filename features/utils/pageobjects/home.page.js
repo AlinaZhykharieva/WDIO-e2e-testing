@@ -45,7 +45,7 @@ class HomePage {
     await this.inputTour.waitForEnabled();
     await this.inputTour.addValue(tourName);
     await this.tourInDropDown.dropDownItemClick();
-    await this.tourType.elementClick();
+    await this.tourType.click();
     await this.tourTypeInDropDown.dropDownItemClick();
     await this.inputForDateTour.clearValue();
     await this.inputForDateTour.addValue(dateOfStartTour);

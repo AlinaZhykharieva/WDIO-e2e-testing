@@ -1,8 +1,7 @@
 import HomePage from '../utils/pageobjects/home.page';
 import dateGeneration from '../utils/helpers/date.generation';
 
-const { Given, When, Then } = require('cucumber');
-const { expect } = require('chai');
+const { Given, Then } = require('cucumber');
 
 Given(/^I am on the home page$/, async () => {
   await browser.url('/');

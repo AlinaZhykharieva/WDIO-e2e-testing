@@ -12,7 +12,7 @@ When(/^I choose payment method by credit card$/, async () => {
 });
 
 When(/^I click button Pay without filling in the required fields$/, async () => {
-  await InvoicePage.clickPay();
+  await InvoicePage.clickPayButton();
 });
 
 Then(/^Alert message displayed$/, async () => {

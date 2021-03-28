@@ -7,26 +7,26 @@ class DetailTourPage {
   }
 
   get inputFirstName() {
-    return new Input('[name = \'firstname\']');
+    return new Input('[name = "firstname"]');
   }
 
   get inputPhone() {
-    return new Input('[name =\'phone\']');
+    return new Input('[name ="phone"]');
   }
 
   get inputEmail() {
-    return new Input('.form-group > [name =\'email\']');
+    return new Input('.form-group > [name ="email"]');
   }
 
   get inputAddress() {
-    return new Input('[name =\'address\']');
+    return new Input('[name ="address"]');
   }
 
   get buttonSubmit() {
     return new Button(' .col> #ClickMyButton');
   }
 
-  async choseMaximumAmountOfDays() {
+  async clickAmountOfDaysButton() {
     await this.buttonMaximumAmountOfDays.buttonClick();
   }
 

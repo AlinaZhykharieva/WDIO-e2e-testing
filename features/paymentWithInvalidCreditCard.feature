@@ -7,6 +7,7 @@ Feature: Payment by credit card
     And I login with username and password
     Then I am on personal account page with <url>
     And I go to home page
+    
     And I choose for two adults tour <tourName>, <dataOfStart>
     Then On detail tour page amount of adults should be <adults>
     When I book the tour

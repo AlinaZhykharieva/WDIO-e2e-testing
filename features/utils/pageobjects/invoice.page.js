@@ -37,11 +37,11 @@ class InvoicePage {
 
   async performPayByCreditCard() {
     await this.payment.buttonClick();
-    await this.dropDownSelect.elementClick();
+    await this.dropDownSelect.click();
     await this.paymentDropDownByCreditCard.dropDownItemClick();
   }
 
-  async clickPay() {
+  async clickPayButton() {
     await this.buttonPay.buttonClick();
   }
 }

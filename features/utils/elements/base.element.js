@@ -7,7 +7,7 @@ export default class Element {
     return this.selector;
   }
 
-  async elementClick() {
+  async click() {
     return (await this.element).click();
   }
 

@@ -18,7 +18,7 @@ class Header {
     await this.loginSubMenu.linkClick();
   }
 
-  async goToHomePage() {
+  async clickHeaderLogoLink() {
     await this.headerLogo.linkClick();
   }
 }
